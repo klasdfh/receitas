@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Receitas Simples</title>
+  <style>
+    body { font-family: Georgia, serif; background: #360A21; color: #EEE; padding: 20px; }
+    input { padding: 5px; font-size: 16px; }
+    .receita { margin: 15px 0; padding: 10px; background: #fff; color: #000; }
+    .oculto { display: none; }
+  </style>
+</head>
+<body>
+
+<h1>Receitas</h1>
+<input type="text" id="busca" placeholder="Digite para buscar...">
+
+<div class="receita"><h2>Bolo de Banana</h2><p>Banana, ovos, farinha...</p></div>
+<div class="receita"><h2>Sopa de Tomate</h2><p>Tomate, cebola, azeite...</p></div>
+<div class="receita"><h2>Pão de Queijo</h2><p>Polvilho, queijo, leite...</p></div>
+
+<script>
+  var input = document.getElementById("busca");
+  input.addEventListener("keyup", function () {
+    var termo = input.value.toLowerCase();
+    var receitas = document.getElementsByClassName("receita");
+    for (var i = 0; i < receitas.length; i++) {
+      var texto = receitas[i].textContent.toLowerCase();
+      if (texto.indexOf(termo) > -1) {
+        receitas[i].className = "receita";
+      } else {
+        receitas[i].className = "receita oculto";
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
