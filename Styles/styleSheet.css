@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, serif;
+}
+
+body {
+    background-color: #f5f5dc;
+    color: #333;
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 16px;
+}
+
+.header {
+    text-align: center;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: #8B4513;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    margin-bottom: 5px;
+    letter-spacing: -1px;
+}
+
+.tagline {
+    font-size: 18px;
+    color: #666;
+    font-style: italic;
+    font-weight: lighter;
+}
+
+.search-section {
+    background-color: #fff;
+    border: 1px solid #d3973d;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 7px;
+}
+
+.search-box {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.search-btn {
+    background: #ffa229;
+    background: linear-gradient(135deg, #f3ecac 0%, #ffe570 40%, #ffa229 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #d3973d;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.3);
+    transition: all 0.3s; /* pode ser removido */
+}
+
+.search-btn:hover {
+    background: #ffb340;
+    background: linear-gradient(135deg, #ffe590 25%, #ffe590 50%, #ffb340 100%);
+    transform: translateY(-1px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 3px 6px rgba(0, 0, 0, 0.25);
+}
+
+.tags-section {
+    background-color: #fff;
+    border: 1px solid #d3973d;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 7px;
+}
+
+.tags-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #8B4513;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.tags-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Fallback para navegadores sem suporte a flex gap */
+.tags-grid > * {
+    margin: 5px;
+}
+
+.tag {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px 12px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    transition: all 0.2s;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tag:hover {
+    background-color: #8B4513;
+    color: white;
+}
+
+.recipes-section {
+    background-color: #fff;
+    border: 1px solid #d3973d;
+    padding: 25px;
+    border-radius: 7px;
+}
+
+.recipes-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    color: #8B4513;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.recipe-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+    border-bottom: 1px dotted #ddd;
+}
+
+.recipe-item:last-child {
+    border-bottom: none;
+}
+
+.recipe-link {
+    text-decoration: none;
+    color: #8B4513;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.recipe-link:hover {
+    text-decoration: underline;
+}
+
+.recipe-difficulty {
+    font-size: 14px;
+    color: #666;
+    margin: 0 7px 0 0;
+    background: #f0f0f0;
+    background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
+    padding: 6px 14px;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.hidden {
+    display: none;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 10px;
+    color: #666;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+    
+    .logo {
+        font-size: 28px;
+    }
+    
+    .tags-grid {
+        gap: 5px;
+    }
+    
+    /* Fallback para navegadores sem gap */
+    .tags-grid > * {
+        margin: 2px;
+    }
+    
+    .recipe-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    /* Fallback para gap */
+    .recipe-item > * {
+        margin-bottom: 5px;
+    }
+    
+    .recipe-item > *:last-child {
+        margin-bottom: 0;
+    }
+}
