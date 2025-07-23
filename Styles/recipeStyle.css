@@ -1,0 +1,307 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: Georgia, serif;
+}
+
+body {
+    background-color: #f5f5dc;
+    color: #333;
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+        
+.tituloReceita {
+    text-align: center;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+.titulo {
+    font-weight: bold;
+    color: #8B4513;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    margin-bottom: 5px;
+    letter-spacing: -1px;
+}
+
+.btn-voltar {
+    font-size: 18px;
+    color: #666;
+    font-style: italic;
+    padding: 100px;
+}
+
+.botoesAcao {
+    display: flex;
+    justify-content: center;
+    gap: 8px;   
+}
+
+/* Fallback para gap */
+.botoesAcao > * {
+    margin: 0 4px;
+}
+
+.compartilhar {
+    background: #ffa229;
+    background: linear-gradient(to bottom, #f3ecac 0%, #ffe570 40%, #ffa229 100%);
+    color: white;
+    margin: 10px 0 0 0;
+    border-radius: 4px;
+    padding: 5px 12px;
+    border: 1px solid #d3973d;
+    font-weight: bold;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.3);
+}
+
+.compartilhar:hover {
+    background: #ffb340;
+    background: linear-gradient(to bottom, #fff9e0 0%, #ffe590 50%, #ffb340 100%);
+}
+
+.imagemReceita {
+    text-align: center;
+    margin: 25px 0 0 0;
+}
+
+.imagemReceita > img{
+    width: 350px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    padding: 4px;
+}
+
+.detalhesReceita {
+    text-align: center;
+    margin: 15px 0 20px 0;
+    font-size: 18px;
+}
+
+.infosReceita {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 25px 0;
+    padding: 25px;
+    background: #ffffff;
+    background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
+    border: 1px solid #d3973d;
+    border-radius: 7px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.infosReceita p {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+    padding: 10px 0;
+    border-bottom: 2px dotted #ddd;
+}
+
+.infosReceita p:last-child {
+    border-bottom: none;
+}
+
+.receita {
+    background: #ffffff;
+    background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
+    border: 1px solid #d3973d;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 7px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.receita h2 {
+    color: #8B4513;
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    padding-bottom: 10px;
+}
+
+/* INGREDIENTES */
+.formIngredientes fieldset {
+    border: 1px solid #d3973d;
+    border-radius: 7px;
+    padding: 20px;
+    background: #fafafa;
+    background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+}
+
+.formIngredientes legend {
+    color: #8B4513;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 0 10px;
+}
+
+.formIngredientes label {
+    display: block;
+    margin: 12px 0;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.formIngredientes label:hover {
+    background-color: rgba(139, 69, 19, 0.05);
+}
+
+.formIngredientes input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+/* PREPARO */
+.etapasPreparo {
+    padding-left: 20px;
+}
+
+.etapasPreparo li {
+    margin: 15px 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 20px auto;
+    width: 60%;
+    border: 1px solid #d3973d;
+}
+
+th {
+    background-color: #ffa229;
+    padding: 8px;
+    color: #ffffff;
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+td {
+    padding: 6px 10px;
+    border: 1px solid #d3973d;
+    background: #fafafa;
+}
+
+tr:hover td {
+    background: #f0f8ff;
+}
+
+.autor, 
+.footer {
+    text-align: center;
+}
+
+.tags {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+    gap: 8px;
+}
+
+/* Fallback para gap */
+.tags > * {
+    margin: 0 4px;
+}
+        
+.tags > a {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px 12px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    transition: all 0.2s;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+        
+.tags > a:hover {
+    background-color: #8B4513;
+    color: white;
+}
+
+.footer > p {
+    margin: 15px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+    
+    .btn-voltar {
+        padding: 20px;
+        font-size: 16px;
+    }
+    
+    .imagemReceita > img {
+        width: 280px;
+        max-width: 100%;
+    }
+    
+    .infosReceita {
+        display: block;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .colunaEsq p:last-child {
+        border-bottom: 2px dotted #ddd;
+    }
+
+    
+    .receita {
+        padding: 20px;
+    }
+    
+    .receita h2 {
+        font-size: 20px;
+    }
+    
+    .formIngredientes fieldset {
+        padding: 15px;
+    }
+    
+    .etapasPreparo {
+        padding-left: 15px;
+    }
+    
+    table {
+        width: 100%;
+        font-size: 14px;
+    }
+    
+    th, td {
+        padding: 6px 4px;
+    }
+    
+    .tags {
+        flex-wrap: wrap;
+    }
+    
+    .tags > a {
+        font-size: 14px;
+        margin: 2px;
+    }
+    
+    /* Fallback para navegadores sem gap */
+    .tags > * {
+        margin: 2px;
+    }
+}
