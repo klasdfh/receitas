@@ -1,39 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Receitas Simples</title>
-  <style>
-    body { font-family: Georgia, serif; background: #360A21; color: #EEE; padding: 20px; }
-    input { padding: 5px; font-size: 16px; }
-    .receita { margin: 15px 0; padding: 10px; background: #fff; color: #000; }
-    .oculto { display: none; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receitas Simples - Cozinha Fácil e Prática</title>
+    <link rel="stylesheet" href="Styles/styleSheet.css">
 </head>
 <body>
+    <div class="header">
+        <div class="logo">Receitas Simples</div>
+        <div class="tagline">Cozinha fácil e prática para o dia a dia</div>
+        <br>
+        <hr>
+    </div>
+    
+    <div class="search-section">
+        <input type="search" class="search-box" id="search-box" placeholder="Buscar receitas... (ex: frango, sobremesa, rápido)">
+        <button class="search-btn" id="search-btn">Buscar</button>
+    </div>
+    
+    <div class="tags-section">
+        <div class="tags-title">📂 Categorias</div>
+        <div class="tags-grid">
+            <a href="#" class="tag">Carnes</a>
+            <a href="#" class="tag">Frango</a>
+            <a href="#" class="tag">Peixes</a>
+            <a href="#" class="tag">Vegetariano</a>
+            <a href="#" class="tag">Massas</a>
+            <a href="#" class="tag">Arroz</a>
+            <a href="#" class="tag">Sobremesas</a>
+            <a href="#" class="tag">Bolos</a>
+            <a href="#" class="tag">Lanches</a>
+            <a href="#" class="tag">Bebidas</a>
+            <a href="#" class="tag">Rápido</a>
+            <a href="#" class="tag">Fácil</a>
+        </div>
+    </div>
+    
+    <div class="recipes-section">
+        <div class="recipes-title">📋 Todas as Receitas (127 receitas)</div>
+        
+        <div class="recipe-item">
+            <a href="torta_de_maçã.html" class="recipe-link">Torta de Maçã</a>
+            <span class="recipe-difficulty">Médio</span>
+        </div>
+        
+        <div class="recipe-item">
+            <a href="#" class="recipe-link">Arroz de Carreteiro</a>
+            <span class="recipe-difficulty">Médio</span>
+        </div>
+        
+        <div class="recipe-item">
+            <a href="#" class="recipe-link">Brigadeiro de Panela</a>
+            <span class="recipe-difficulty">Fácil</span>
+        </div>
+        
+        <div class="recipe-item">
+            <a href="#" class="recipe-link">Pão de Açúcar Simples</a>
+            <span class="recipe-difficulty">Fácil</span>
+        </div>
+        
+        <div class="recipe-item">
+            <a href="#" class="recipe-link">Lasanha de Berinjela</a>
+            <span class="recipe-difficulty">Médio</span>
+        </div>
+        
+        <div class="recipe-item">
+            <a href="#" class="recipe-link">Suco de Manga com Leite</a>
+            <span class="recipe-difficulty">Fácil</span>
+        </div>
+        
+        <div class="recipe-item">
+            <a href="#" class="recipe-link">Torta de Limão Express</a>
+            <span class="recipe-difficulty">Fácil</span>
+        </div>
+        
+        <div class="recipe-item">
+            <a href="#" class="recipe-link">Feijão Tropeiro</a>
+            <span class="recipe-difficulty">Médio</span>
+        </div>
+        
+        <div class="recipe-item">
+            <a href="#" class="recipe-link">Bolo de Chocolate de Caneca</a>
+            <span class="recipe-difficulty">Fácil</span>
+        </div>
+        
+        <div class="recipe-item">
+            <a href="#" class="recipe-link">Escondidinho de Carne Seca</a>
+            <span class="recipe-difficulty">Médio</span>
+        </div>
+        
+        <div class="recipe-item">
+            <a href="#" class="recipe-link">Vitamina de Banana</a>
+            <span class="recipe-difficulty">Fácil</span>
+        </div>
+        
+        <div class="recipe-item">
+            <a href="#" class="recipe-link">Moqueca de Peixe Simples</a>
+            <span class="recipe-difficulty">Médio</span>
+        </div>
+        
+        <div class="recipe-item">
+            <a href="#" class="recipe-link">Pudim de Leite Condensado</a>
+            <span class="recipe-difficulty">Médio</span>
+        </div>
+        
+        <div class="recipe-item">
+            <a href="#" class="recipe-link">Sanduíche Natural</a>
+            <span class="recipe-difficulty">Fácil</span>
+        </div>
+        
+        <div class="recipe-item">
+            <a href="#" class="recipe-link">Sopa de Mandioquinha</a>
+            <span class="recipe-difficulty">Fácil</span>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <hr>
+        <br>
+        © 2025 Receitas Simples - Feito com ❤️ para facilitar sua cozinha
+    </div>
 
-<h1>Receitas</h1>
-<input type="text" id="busca" placeholder="Digite para buscar...">
-
-<div class="receita"><h2>Bolo de Banana</h2><p>Banana, ovos, farinha...</p></div>
-<div class="receita"><h2>Sopa de Tomate</h2><p>Tomate, cebola, azeite...</p></div>
-<div class="receita"><h2>Pão de Queijo</h2><p>Polvilho, queijo, leite...</p></div>
-
-<script>
-  var input = document.getElementById("busca");
-  input.addEventListener("keyup", function () {
-    var termo = input.value.toLowerCase();
-    var receitas = document.getElementsByClassName("receita");
-    for (var i = 0; i < receitas.length; i++) {
-      var texto = receitas[i].textContent.toLowerCase();
-      if (texto.indexOf(termo) > -1) {
-        receitas[i].className = "receita";
-      } else {
-        receitas[i].className = "receita oculto";
-      }
-    }
-  });
-</script>
-
+    <script src="Scripts/script.js"></script>
 </body>
 </html>
