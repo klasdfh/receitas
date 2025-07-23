@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Nova Receita - Receitas Simples</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Georgia, serif;
+        }
+        
+        body {
+            background-color: #f5f5dc;
+            color: #333;
+            line-height: 1.5;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-size: 16px;
+        }
+        
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #8B4513;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 5px;
+            letter-spacing: -1px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            font-style: italic;
+            font-weight: lighter;
+        }
+        
+        .btn-voltar {
+            font-size: 18px;
+            color: #666;
+            font-style: italic;
+            padding: 10px;
+        }
+        
+       
+        .form-container {
+            background-color: #fff;
+            border: 1px solid #d3973d;
+            padding: 30px;
+            border-radius: 7px;
+            margin-bottom: 20px;
+        }
+        
+        .form-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            color: #8B4513;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: Georgia, serif;
+            margin-bottom: 15px;
+        }
+        
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .ingredientes-list {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            background: #fafafa;
+            margin-bottom: 15px;
+        }
+        
+        .ingrediente-item {
+            display: block;
+            margin-bottom: 10px;
+            padding: 8px;
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 3px;
+        }
+        
+        .ingrediente-item input {
+            width: 100%;
+            border: none;
+            margin-bottom: 0;
+            padding: 5px;
+        }
+        
+        .btn-add {
+            background: #ffa229;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .btn-add:hover {
+            background: #ffb340;
+        }
+        
+        .btn-remove {
+            background: #cc5555;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            float: right;
+        }
+        
+        .btn-remove:hover {
+            background: #aa4444;
+        }
+        
+        .row {
+            overflow: hidden;
+        }
+        
+        .col-half {
+            width: 48%;
+            float: left;
+        }
+        
+        .col-half:last-child {
+            float: right;
+        }
+        
+        .btn-submit {
+            background: #8B4513;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .btn-submit:hover {
+            background: #654321;
+        }
+        
+        .preview-container {
+            background-color: #fff;
+            border: 1px solid #d3973d;
+            padding: 20px;
+            border-radius: 7px;
+            margin-top: 20px;
+        }
+        
+        .preview-title {
+            font-size: 20px;
+            color: #8B4513;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .codigo-gerado {
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        @media (max-width: 600px) {
+            .col-half {
+                width: 100%;
+                float: none;
+                margin-bottom: 10px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Adicionar Nova Receita</div>
+        <div class="subtitle">Crie sua receita de forma simples</div>
+        <br>
+        <hr>
+    </div>
+
+    <a href="index.html" class="btn-voltar">< Voltar ao Início</a>
+    <br>
+    <br>
+
+    <form class="form-container" id="recipeForm">
+        <!-- Informações Básicas -->
+        <div class="form-section">
+            <div class="section-title">📝 Informações Básicas</div>
+            
+            <label for="nome">Nome da Receita:</label>
+            <input type="text" id="nome" name="nome" placeholder="Ex: Torta de Maçã Caseira" required>
+            
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" placeholder="Descreva brevemente sua receita..."></textarea>
+            
+            <div class="row">
+                <div class="col-half">
+                    <label for="porcoes">Porções:</label>
+                    <input type="number" id="porcoes" name="porcoes" min="1" value="4">
+                </div>
+                <div class="col-half">
+                    <label for="dificuldade">Dificuldade:</label>
+                    <select id="dificuldade" name="dificuldade">
+                        <option value="Fácil">Fácil</option>
+                        <option value="Médio">Médio</option>
+                        <option value="Difícil">Difícil</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-half">
+                    <label for="tempo-preparo">Tempo de Preparo (min):</label>
+                    <input type="number" id="tempo-preparo" name="tempo-preparo" min="1" value="30">
+                </div>
+                <div class="col-half">
+                    <label for="tempo-cozimento">Tempo de Cozimento (min):</label>
+                    <input type="number" id="tempo-cozimento" name="tempo-cozimento" min="0" value="0">
+                </div>
+            </div>
+        </div>
+
+        <!-- Ingredientes -->
+        <div class="form-section">
+            <div class="section-title">🥕 Ingredientes</div>
+            <div class="ingredientes-list" id="ingredientes-list">
+                <div class="ingrediente-item">
+                    <input type="text" placeholder="Ex: 2 xícaras de farinha de trigo" name="ingrediente">
+                </div>
+            </div>
+            <button type="button" class="btn-add" onclick="adicionarIngrediente()">+ Adicionar Ingrediente</button>
+        </div>
+
+        <!-- Modo de Preparo -->
+        <div class="form-section">
+            <div class="section-title">👨‍🍳 Modo de Preparo</div>
+            <textarea id="modo-preparo" name="modo-preparo" placeholder="Descreva o passo a passo do preparo...
+            
+Exemplo:
+1. Pré-aqueça o forno a 180°C
+2. Misture os ingredientes secos
+3. Adicione os ingredientes líquidos..."></textarea>
+        </div>
+
+        <!-- Tags -->
+        <div class="form-section">
+            <div class="section-title">🏷️ Tags (Categorias)</div>
+            <input type="text" id="tags" name="tags" placeholder="Ex: doces, tortas, sobremesa (separadas por vírgula)">
+        </div>
+
+        <button type="button" class="btn-submit" onclick="gerarReceita()">🎯 Gerar Código da Receita</button>
+    </form>
+
+    <div class="preview-container" id="preview-container" style="display: none;">
+        <div class="preview-title">📋 Código HTML Gerado</div>
+        <p style="margin-bottom: 15px; color: #666; font-size: 14px;">
+            Copie o código abaixo, salve como um arquivo .html (ex: MinhaReceita.html) e depois faça o merge no GitHub do projeto:
+        </p>
+        <div class="codigo-gerado" id="codigo-gerado"></div>
+        <button type="button" class="btn-add" onclick="copiarCodigo()" style="margin-top: 15px;">📋 Copiar Código</button>
+    </div>
+
+    <script>
+        function adicionarIngrediente() {
+            var container = document.getElementById('ingredientes-list');
+            var div = document.createElement('div');
+            div.className = 'ingrediente-item';
+            div.innerHTML = '<input type="text" placeholder="Ex: 1 xícara de açúcar" name="ingrediente">' +
+                          '<button type="button" class="btn-remove" onclick="removerIngrediente(this)">×</button>';
+            container.appendChild(div);
+        }
+        
+        function removerIngrediente(btn) {
+            btn.parentNode.remove();
+        }
+        
+        function gerarReceita() {
+            var nome = document.getElementById('nome').value;
+            var descricao = document.getElementById('descricao').value;
+            var porcoes = document.getElementById('porcoes').value;
+            var dificuldade = document.getElementById('dificuldade').value;
+            var tempoPreparo = document.getElementById('tempo-preparo').value;
+            var tempoCozimento = document.getElementById('tempo-cozimento').value;
+            var modoPreparo = document.getElementById('modo-preparo').value;
+            var tags = document.getElementById('tags').value;
+            
+            if (!nome.trim()) {
+                alert('Por favor, preencha o nome da receita!');
+                return;
+            }
+            
+            // Coletar ingredientes
+            var ingredientesInputs = document.querySelectorAll('input[name="ingrediente"]');
+            var ingredientes = [];
+            for (var i = 0; i < ingredientesInputs.length; i++) {
+                if (ingredientesInputs[i].value.trim()) {
+                    ingredientes.push(ingredientesInputs[i].value.trim());
+                }
+            }
+            
+            // Gerar código HTML
+            var codigoHTML = gerarCodigoHTML(nome, descricao, porcoes, dificuldade, tempoPreparo, tempoCozimento, ingredientes, modoPreparo, tags);
+            
+            document.getElementById('codigo-gerado').textContent = codigoHTML;
+            document.getElementById('preview-container').style.display = 'block';
+            
+            // Scroll para o preview
+            document.getElementById('preview-container').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function gerarCodigoHTML(nome, descricao, porcoes, dificuldade, tempoPreparo, tempoCozimento, ingredientes, modoPreparo, tags) {
+            var nomeArquivo = nome.toLowerCase().replace(/[^a-z0-9]/g, '');
+            var data = new Date().toLocaleDateString('pt-BR');
+            
+            var ingredientesHTML = '';
+            for (var i = 0; i < ingredientes.length; i++) {
+                ingredientesHTML += '                    ' + criarTag('label') + criarTag('input', 'type="checkbox"') + ' ' + ingredientes[i] + criarTag('/label') + '\n';
+            }
+            
+            var tagsHTML = '';
+            if (tags.trim()) {
+                var tagsArray = tags.split(',');
+                for (var i = 0; i < tagsArray.length; i++) {
+                    tagsHTML += '        ' + criarTag('a', 'href="#"') + tagsArray[i].trim() + criarTag('/a') + '\n';
+                }
+            }
+            
+            var preparoHTML = modoPreparo.split('\n').map(function(linha, index) {
+                if (linha.trim()) {
+                    return '                ' + criarTag('li') + linha.trim() + criarTag('/li');
+                }
+                return '';
+            }).filter(function(linha) { return linha; }).join('\n');
+            
+            // Concatenação de strings ao invés de template literals
+            var codigo = '';
+            codigo += criarTag('!DOCTYPE html') + '\n';
+            codigo += criarTag('html', 'lang="pt-BR"') + '\n';
+            codigo += criarTag('head') + '\n';
+            codigo += '    ' + criarTag('meta', 'charset="UTF-8"') + '\n';
+            codigo += '    ' + criarTag('meta', 'name="viewport" content="width=device-width, initial-scale=1.0"') + '\n';
+            codigo += '    ' + criarTag('title') + 'Receitas Simples - ' + nome + criarTag('/title') + '\n';
+            codigo += '    ' + criarTag('link', 'rel="stylesheet" href="Styles/recipeStyle.css"') + '\n';
+            codigo += criarTag('/head') + '\n\n';
+            
+            codigo += criarTag('body') + '\n';
+            codigo += '    ' + criarTag('div', 'class="tituloReceita"') + '\n';
+            codigo += '        ' + criarTag('h1', 'class="titulo"') + nome + criarTag('/h1') + '\n';
+            codigo += '        ' + criarTag('a', 'href="index.html" class="btn-voltar"') + criarTag(' Voltar ao Início') + criarTag('/a') + '\n';
+            codigo += '        ' + criarTag('br') + criarTag('br') + criarTag('hr') + '\n';
+            codigo += '    ' + criarTag('/div') + '\n\n';
+            
+            codigo += '    ' + criarTag('div', 'class="botoesAcao"') + '\n';
+            codigo += '        ' + criarTag('button', 'class="compartilhar" onclick="window.print()"') + '🖨️ Imprimir esta página' + criarTag('/button') + '\n';
+            codigo += '        ' + criarTag('button', 'class="compartilhar" onclick="location.href=\'mailto:?subject=Veja%20esta%20receita!&body=Confira%20esta%20receita%20deliciosa!\'" title="Enviar por e-mail"') + '📧 Enviar por E-mail' + criarTag('/button') + '\n';
+            codigo += '        ' + criarTag('button', 'class="compartilhar" onclick="window.open(\'https://api.whatsapp.com/send?text=Confira%20esta%20receita%20deliciosa!\', \'_blank\')" title="Enviar por WhatsApp"') + '📱 Enviar por WhatsApp' + criarTag('/button') + '\n';
+            codigo += '    ' + criarTag('/div') + '\n\n';
+            
+            codigo += '    ' + criarTag('div', 'class="detalhesReceita"') + '\n';
+            codigo += '        ' + criarTag('p') + descricao + criarTag('/p') + '\n';
+            codigo += '    ' + criarTag('/div') + '\n\n';
+            
+            codigo += '    ' + criarTag('div', 'class="infosReceita"') + '\n';
+            codigo += '        ' + criarTag('div', 'class="colunaEsq"') + '\n';
+            codigo += '            ' + criarTag('p') + '⏱️ Tempo de preparo: ' + tempoPreparo + ' min' + criarTag('/p') + '\n';
+            codigo += '            ' + criarTag('p') + '🔥 Tempo de cozimento: ' + tempoCozimento + ' min' + criarTag('/p') + '\n';
+            codigo += '            ' + criarTag('p') + '🍽️ Porções: ' + porcoes + criarTag('/p') + '\n';
+            codigo += '        ' + criarTag('/div') + '\n\n';
+            codigo += '        ' + criarTag('div', 'class="colunaDir"') + '\n';
+            codigo += '            ' + criarTag('p') + '⭐ Avaliação: ⭐⭐⭐⭐' + criarTag('/p') + '\n';
+            codigo += '            ' + criarTag('p') + '📊 Dificuldade: ' + dificuldade + criarTag('/p') + '\n';
+            codigo += '            ' + criarTag('p') + '💰 Custo: Médio' + criarTag('/p') + '\n';
+            codigo += '        ' + criarTag('/div') + '\n';
+            codigo += '    ' + criarTag('/div') + '\n\n';
+            
+            codigo += '    ' + criarTag('div', 'class="receita"') + '\n';
+            codigo += '        ' + criarTag('div', 'class="ingredientes"') + '\n';
+            codigo += '            ' + criarTag('h2') + 'INGREDIENTES' + criarTag('/h2') + '\n';
+            codigo += '            ' + criarTag('form', 'class="formIngredientes"') + '\n';
+            codigo += '                ' + criarTag('fieldset') + '\n';
+            codigo += '                    ' + criarTag('legend') + '✔️ Você vai precisar de:' + criarTag('/legend') + '\n';
+            codigo += ingredientesHTML;
+            codigo += '                ' + criarTag('/fieldset') + '\n';
+            codigo += '            ' + criarTag('/form') + '\n';
+            codigo += '        ' + criarTag('/div') + '\n\n';
+            codigo += '        ' + criarTag('br') + criarTag('br') + '\n\n';
+            codigo += '        ' + criarTag('div', 'class="preparo"') + '\n';
+            codigo += '            ' + criarTag('h2') + 'MODO DE PREPARO' + criarTag('/h2') + '\n';
+            codigo += '            ' + criarTag('ol', 'class="etapasPreparo"') + '\n';
+            codigo += preparoHTML + '\n';
+            codigo += '            ' + criarTag('/ol') + '\n';
+            codigo += '        ' + criarTag('/div') + '\n';
+            codigo += '    ' + criarTag('/div') + '\n\n';
+            
+            codigo += '    ' + criarTag('div', 'class="autor"') + '\n';
+            codigo += '        ' + criarTag('h4') + 'Receita criada em ' + data + criarTag('/h4') + '\n';
+            codigo += '    ' + criarTag('/div') + '\n\n';
+            
+            codigo += '    ' + criarTag('div', 'class="tags"') + '\n';
+            codigo += tagsHTML;
+            codigo += '    ' + criarTag('/div') + '\n\n';
+            
+            codigo += '    ' + criarTag('div', 'class="footer"') + '\n';
+            codigo += '        ' + criarTag('hr') + '\n';
+            codigo += '        ' + criarTag('p') + '© 2025 Receitas Simples - Feito com ❤️ para facilitar sua cozinha' + criarTag('/p') + '\n';
+            codigo += '    ' + criarTag('/div') + '\n';
+            codigo += criarTag('/body') + '\n';
+            codigo += criarTag('/html');
+            
+            return codigo;
+        }
+        
+        // Função auxiliar para criar tags HTML sem confundir o parser
+        function criarTag(tag, atributos) {
+            if (tag.charAt(0) === '!') {
+                return '<' + tag + '>';
+            }
+            if (tag.charAt(0) === '/') {
+                return '<' + tag + '>';
+            }
+            if (atributos) {
+                return '<' + tag + ' ' + atributos + '>';
+            }
+            return '<' + tag + '>';
+        }
+        
+        function copiarCodigo() {
+            var codigo = document.getElementById('codigo-gerado');
+            var range = document.createRange();
+            range.selectNode(codigo);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            
+            try {
+                document.execCommand('copy');
+                alert('Código copiado! Cole em um arquivo .html');
+            } catch (err) {
+                alert('Erro ao copiar. Selecione manualmente o texto.');
+            }
+            
+            window.getSelection().removeAllRanges();
+        }
+    </script>
+</body>
+</html>
