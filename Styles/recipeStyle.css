@@ -45,10 +45,11 @@ body {
 }
 
 .compartilhar {
+    line-height: 1;
     background: #ffa229;
     background: linear-gradient(to bottom, #f3ecac 0%, #ffe570 40%, #ffa229 100%);
     color: white;
-    margin: 10px 5px 0 5px;
+    margin: 10px 8px 0 8px;
     border-radius: 4px;
     padding: 5px 12px;
     border: 1px solid #d3973d;
@@ -83,7 +84,8 @@ body {
 
 .infosReceita {
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     margin: 25px 0;
     padding: 25px;
@@ -100,6 +102,7 @@ body {
     font-weight: 500;
     padding: 10px 0;
     border-bottom: 2px dotted #ddd;
+    margin: 0px 20px 0 20px;
 }
 
 .infosReceita p:last-child {
