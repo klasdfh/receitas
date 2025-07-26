@@ -39,13 +39,9 @@ body {
 
 .botoesAcao {
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     justify-content: center;
-    gap: 8px;   
-}
-
-/* Fallback para gap */
-.botoesAcao > * {
-    margin: 0 4px;
 }
 
 .compartilhar {
